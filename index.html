@@ -3,90 +3,115 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Verse Display - Download</title>
+<title>Verse Display - The Covenant Nation</title>
 <meta name="description" content="Say a Bible verse and it appears on the church screen. Free download for Windows and Mac.">
 <link rel="icon" href="icon.png">
 <style>
-  :root { --bg:#f6f3ec; --card:#fff; --ink:#1b2430; --mut:#5d6877; --line:#e3ddd0; --acc:#1f5fbf; --acc2:#174a96; --gold:#c8962b; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#0f141b; --card:#171e28; --ink:#eef1f5; --mut:#9aa6b5; --line:#263041; --acc:#5aa2ff; --acc2:#7db6ff; --gold:#e0b04a; } }
+  :root {
+    color-scheme: dark;
+    --black:#0a0a0a; --ink:#111111; --card:#171310; --line:#3a2a18;
+    --orange:#e5651f; --amber:#ea9a27; --gold:#f5cb42; --cream:#fbf1d8; --mut:#c9b99a;
+  }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.55 system-ui,"Segoe UI",Roboto,Arial,sans-serif; }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
-  header { padding: 56px 0 28px; text-align: center; }
-  header img { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 8px 28px rgba(0,0,0,.18); }
-  h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 6vw, 52px); margin: 18px 0 8px; letter-spacing: -.01em; }
-  header p { color: var(--mut); max-width: 560px; margin: 0 auto; font-size: 19px; }
-  .dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 30px 0; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
-  .card.pick { border-color: var(--acc); box-shadow: 0 0 0 2px color-mix(in srgb, var(--acc) 30%, transparent); }
-  .card h2 { margin: 0 0 4px; font-size: 20px; }
-  .card .s { color: var(--mut); font-size: 14px; margin-bottom: 14px; min-height: 40px; }
-  a.btn { display: block; text-align: center; text-decoration: none; background: var(--acc); color: #fff; font-weight: 650; padding: 13px 16px; border-radius: 10px; }
-  a.btn:hover { background: var(--acc2); }
-  a.btn.alt { background: transparent; color: var(--acc); border: 1px solid var(--acc); margin-top: 10px; }
-  h3 { font-family: Georgia, serif; font-size: 26px; margin: 44px 0 10px; }
-  ol, ul { padding-left: 22px; } li { margin: 6px 0; }
-  .note { background: var(--card); border-left: 4px solid var(--gold); border-radius: 8px; padding: 12px 16px; margin: 14px 0; color: var(--mut); font-size: 15px; }
-  details { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; margin: 10px 0; }
-  summary { cursor: pointer; font-weight: 650; }
-  footer { color: var(--mut); text-align: center; font-size: 14px; padding: 40px 0 50px; }
-  .hide { display: none; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--black); color:var(--cream); font:17px/1.6 system-ui,"Segoe UI",Roboto,Arial,sans-serif; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+  .hero { text-align:center; padding: 44px 0 40px;
+    background: radial-gradient(60% 55% at 50% 22%, rgba(229,101,31,.35), rgba(229,101,31,0) 70%), var(--black);
+    border-bottom: 3px solid var(--orange); }
+  .hero img.logo { width: min(340px, 72vw); height: auto; filter: drop-shadow(0 10px 30px rgba(229,101,31,.35)); }
+  .eyebrow { letter-spacing:.28em; text-transform:uppercase; font-size:13px; color:var(--amber); margin: 14px 0 0; font-weight:600; }
+  h1 { font-family: Georgia,"Times New Roman",serif; font-size: clamp(38px,7vw,60px); line-height:1.1; margin: 8px 0 12px; color: var(--gold); }
+  .hero p.lead { color: var(--cream); max-width: 560px; margin: 0 auto 24px; font-size: 19px; opacity:.92; }
+  .hero a.jump { display:inline-block; background:var(--gold); color:#1a1100; font-weight:700; text-decoration:none; padding:13px 28px; border-radius:999px; }
+  .hero a.jump:hover { background:#ffd957; }
+
+  h2.sec { font-family: Georgia,serif; font-size: 28px; color: var(--gold); margin: 52px 0 14px; display:flex; align-items:center; gap:12px; }
+  h2.sec::after { content:""; flex:1; height:2px; background: linear-gradient(90deg, var(--orange), transparent); }
+
+  .dl { display:grid; grid-template-columns: repeat(auto-fit,minmax(270px,1fr)); gap:18px; margin-top: 8px; }
+  .card { background: linear-gradient(180deg,#1d1610,var(--card)); border:1px solid var(--line); border-radius:18px; padding:24px; }
+  .card.pick { border-color: var(--amber); box-shadow: 0 0 0 1px var(--amber), 0 10px 40px rgba(234,154,39,.18); }
+  .card h3 { margin:0 0 4px; font-size:22px; color:var(--cream); }
+  .card .s { color:var(--mut); font-size:14.5px; min-height:46px; margin-bottom:14px; }
+  a.btn { display:block; text-align:center; text-decoration:none; background: var(--gold); color:#1a1100; font-weight:700; padding:14px 16px; border-radius:12px; }
+  a.btn:hover { background:#ffd957; }
+  a.btn.alt { background: transparent; color: var(--gold); border:1.5px solid var(--amber); margin-top:10px; }
+  a.btn.alt:hover { background: rgba(245,203,66,.1); }
+  a.btn:focus-visible, summary:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+
+  .note { border-left:4px solid var(--orange); background:#1a130d; border-radius:10px; padding:14px 18px; margin:22px 0 0; color:var(--cream); font-size:15.5px; }
+  ol.steps { list-style:none; padding:0; counter-reset: s; margin: 0; }
+  ol.steps li { counter-increment: s; position:relative; padding: 4px 0 14px 54px; }
+  ol.steps li::before { content: counter(s); position:absolute; left:0; top:0; width:38px; height:38px; border-radius:50%; background:var(--orange); color:#fff; font-weight:700; display:grid; place-items:center; }
+
+  details { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:10px 0; }
+  summary { cursor:pointer; font-weight:650; color:var(--gold); }
+  details p { color:var(--cream); margin:10px 0 0; opacity:.92; }
+
+  footer { margin-top: 60px; padding: 28px 16px 40px; text-align:center; color:var(--mut); font-size:14px; border-top:3px solid var(--orange); background:#0d0a07; }
+  footer b { color: var(--gold); }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <img src="icon.png" alt="Verse Display icon">
-    <h1>Verse Display</h1>
-    <p>Say a Bible verse and it appears on the church screen. Works with your church display software such as OBS and EasyWorship.</p>
-  </header>
+<header class="hero">
+  <img class="logo" src="logo.png" alt="The Covenant Nation logo">
+  <p class="eyebrow">The Covenant Nation</p>
+  <h1>Verse Display</h1>
+  <p class="lead">Say a Bible verse and it appears on the church screen. Works with OBS, EasyWorship and any display software.</p>
+  <a class="jump" href="#download">Download now</a>
+</header>
 
+<main class="wrap">
+  <h2 class="sec" id="download">Download</h2>
   <div class="dl">
     <div class="card" id="cardWin">
-      <h2>Windows</h2>
+      <h3>Windows</h3>
       <div class="s">Windows 10 or 11. One file, nothing to install.</div>
       <a class="btn" id="dlWin" href="#">Download for Windows</a>
     </div>
     <div class="card" id="cardMac">
-      <h2>Mac</h2>
-      <div class="s">macOS 12 or newer. Pick the one that matches your Mac (see below).</div>
-      <a class="btn" id="dlMacArm" href="#">Mac with Apple chip (M1, M2, M3, M4)</a>
+      <h3>Mac</h3>
+      <div class="s">macOS 12 or newer. Choose the one that matches your Mac (help below).</div>
+      <a class="btn" id="dlMacArm" href="#">Mac with Apple chip (M1 - M4)</a>
       <a class="btn alt" id="dlMacIntel" href="#">Mac with Intel chip</a>
     </div>
   </div>
-
   <div class="note">You need <b>Google Chrome</b> or <b>Microsoft Edge</b> and an internet connection. Verse Display uses their free built-in listening, and it fetches the Bible text online.</div>
 
-  <h3>How to start</h3>
-  <ol>
-    <li>Download the file for your computer.</li>
-    <li>Open it. A Verse Display window appears. Click <b>Start listening</b> and allow the microphone.</li>
-    <li>Say a verse, like "John chapter 3 verse 16", or quote it. The verse is detected and you press Enter to show it.</li>
-    <li>For the church screen, click <b>Open screen window</b> and drag it to the display, or add the screen address as a Browser source in OBS.</li>
+  <h2 class="sec">How to start</h2>
+  <ol class="steps">
+    <li>Download the file for your computer and open it.</li>
+    <li>A Verse Display window appears. Click <b>Start listening</b> and allow the microphone.</li>
+    <li>Say a verse such as "John chapter 3 verse 16", or quote it. The verse is found and you press <b>Enter</b> to show it.</li>
+    <li>For the church screen click <b>Open screen window</b> and drag it onto the display, or add the screen address as a Browser source in OBS.</li>
   </ol>
 
-  <h3>If your computer shows a warning</h3>
+  <h2 class="sec">If your computer shows a warning</h2>
   <details open>
     <summary>Windows: "Windows protected your PC"</summary>
     <p>This appears for any new program that is not yet widely downloaded. Click <b>More info</b>, then <b>Run anyway</b>. If nothing opens, right-click the file, choose <b>Properties</b>, tick <b>Unblock</b> at the bottom, then Apply.</p>
   </details>
   <details>
     <summary>Mac: "Verse Display cannot be opened"</summary>
-    <p>Unzip the download and drag <b>Verse Display</b> into Applications. The first time, <b>right-click it and choose Open</b>, then click Open. On newer Macs, if that does not work: open <b>System Settings &rarr; Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to Verse Display. You only do this once.</p>
+    <p>Unzip the download and drag <b>Verse Display</b> into Applications. The first time, <b>right-click it and choose Open</b>, then click Open. On newer Macs, if that does not work, open <b>System Settings &rarr; Privacy &amp; Security</b>, scroll down and click <b>Open Anyway</b> next to Verse Display. You only do this once.</p>
   </details>
   <details>
     <summary>Which Mac do I have?</summary>
-    <p>Click the Apple menu (top left) &rarr; <b>About This Mac</b>. If it says <b>Chip: Apple M1</b> (or M2, M3, M4) choose the Apple chip download. If it says <b>Processor: Intel</b>, choose the Intel download.</p>
+    <p>Click the Apple menu (top left), then <b>About This Mac</b>. If it says <b>Chip: Apple M1</b> (or M2, M3, M4) choose the Apple chip download. If it says <b>Processor: Intel</b>, choose the Intel download.</p>
   </details>
 
-  <h3>About the Bible translations</h3>
-  <p>Many free translations are included, and the church's licensed Bibles (NIV, NKJV, NLT) are already set up inside the program. Nothing to enter. They are for this church's own services only, so please do not share this page or the download with other organisations.</p>
+  <h2 class="sec">About the Bible translations</h2>
+  <p>Many free translations are included, and the church's licensed Bibles (NIV, NKJV, NLT) are already set up inside the program, so there is nothing to enter. They are for this church's own services only, so please do not share this page or the download with other organisations.</p>
+</main>
 
-  <footer>Verse Display &middot; Made for churches</footer>
-</div>
+<footer><b>The Covenant Nation</b> &middot; Verse Display</footer>
+
 <script>
   // The downloads are attached to the latest release of this site's GitHub repository.
-  // Set DOWNLOAD_BASE by hand only if you use a custom domain, e.g. 'https://github.com/YOUR-NAME/verse-display-downloads/releases/latest/download/'
+  // Set DOWNLOAD_BASE by hand only if you use your own web address, e.g.
+  // 'https://github.com/jojo-kreator/verse-display-download/releases/latest/download/'
   var DOWNLOAD_BASE = '';
   (function () {
     var base = DOWNLOAD_BASE;
